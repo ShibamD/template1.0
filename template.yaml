@@ -1,5 +1,5 @@
 apiVersion: harness.io/v1
-identifier: kind-test
+identifier: kind_test
 kind: Workflow
 metadata:
   namespace: default

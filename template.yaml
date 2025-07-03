@@ -1,7 +1,7 @@
 apiVersion: harness.io/v1
 kind: Workflow
 type: service
-identifier: reactapp
+identifier: testKind
 name: (Demo) Create a react app
 owner: user:pranay.shah
 spec:

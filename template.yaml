@@ -1,4 +1,5 @@
-apiVersion: scaffolder.backstage.io/v1beta3
+apiVersion: harness.io/v1
+identifier: kind-test
 kind: Workflow
 metadata:
   namespace: default

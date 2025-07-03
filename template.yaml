@@ -1,33 +1,14 @@
 apiVersion: harness.io/v1
-identifier: kind_test
 kind: Workflow
-metadata:
-  namespace: default
-  annotations:
-    backstage.io/managed-by-location: url:https://github.com/pranay-harness/harness-core/tree/master/idp-service/workflow.yaml
-    backstage.io/managed-by-origin-location: url:https://github.com/pranay-harness/harness-core/blob/master/idp-service/workflow.yaml
-    backstage.io/view-url: https://github.com/pranay-harness/harness-core/tree/master/idp-service/workflow.yaml
-    backstage.io/edit-url: https://github.com/pranay-harness/harness-core/edit/master/idp-service/workflow.yaml
-    backstage.io/source-location: url:https://github.com/pranay-harness/harness-core/tree/master/idp-service/
-  name: react-app
-  title: (Demo) Create a react app
-  description: A template to create a new react app
-  tags:
-    - nextjs
-    - react
-    - javascript
-  uid: ecd3f4f6-a4e1-4844-98db-7b65513d0d51
-  etag: f62dbfc36832524630d910bcdd541087dabc8ca5
-relations:
-  - type: ownedBy
-    targetRef: user:default/pranay.shah
-    target:
-      kind: user
-      namespace: default
-      name: pranay.shah
+type: service
+identifier: reactapp
+name: (Demo) Create a react app
+owner: user:pranay.shah
 spec:
-  owner: user:default/pranay.shah
-  type: service
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
   parameters:
     - title: Next.js app details
       required:
@@ -97,7 +78,11 @@ spec:
           db: ${{ parameters.db }}
           cache: ${{ parameters.cache }}
         apikey: ${{ parameters.token }}
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+metadata:
+  description: A template to create a new react app
+  annotations:
+    backstage.io/source-location: url:https://github.com/pranay-harness/harness-core/tree/master/idp-service/
+  tags:
+    - nextjs
+    - react
+    - javascript

@@ -20,8 +20,8 @@ spec:
           description: Upload a file that will be processed in the workflow
           ui:backstage:
             review:
-              show: false
-              mask: true  
+              show: true
+              mask: false  
         token:
           title: Harness Token
           type: string

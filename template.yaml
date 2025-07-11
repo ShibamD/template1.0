@@ -1,65 +1,27 @@
-apiVersion: harness.io/v1
-kind: Workflow
-type: service
-identifier: testKind
-name: (Demo) Create a react app
-owner: user:pranay.shah
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-workflow-pipeline
+  title: Test pipeline using Workflows
 spec:
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+  owner: name.owner
+  type: service
   parameters:
-    - title: Next.js app details
-      required:
-        - project_name
-        - github_repo
+    - title: Repository Name
       properties:
         project_name:
-          title: Name of your new app
+          title: Name your project
+          ui:readonly: true
           type: string
-          description: Unique name of the app
-        github_repo:
-          title: Name of the GitHub repository
+        uploaded_file:
+          title: Upload File
           type: string
-          description: This will be the name of Repository on Github
-        isPublish:
-          title: Do you wish to publish the artifact to the internal registry?
-          type: boolean
-    - title: Service Infrastructure Details
-      required:
-        - owner
-      properties:
-        cloud_provider:
-          title: Choose a cloud provider for Deployment
-          type: string
-          enum:
-            - GCP
-            - AWS
-          default: GCP
-        db:
-          title: Choose a Database Type for the Service
-          type: string
-          enum:
-            - None
-            - MySQL
-            - Postgres
-            - MongoDB
-          default: None
-        cache:
-          title: Choose a caching system for the Service
-          type: string
-          enum:
-            - None
-            - Redis
-          default: None
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
+          format: data-url
+          description: Upload a file that will be processed in the workflow
+          ui:backstage:
+            review:
+              show: false
+              mask: true  
         token:
           title: Harness Token
           type: string
@@ -67,22 +29,14 @@ spec:
           ui:field: HarnessAuthToken
   steps:
     - id: trigger
-      name: Creating your react app
+      name: Creating your github repository
       action: trigger:harness-custom-pipeline
       input:
-        url: https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE
+        url: PIPELINE_URL
         inputset:
-          project_name: ${{ parameters.project_name }}
-          github_repo: ${{ parameters.github_repo }}
-          cloud_provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
+          github_org: ${{ parameters.project_name }}
         apikey: ${{ parameters.token }}
-metadata:
-  description: A template to create a new react app
-  annotations:
-    backstage.io/source-location: url:https://github.com/pranay-harness/harness-core/tree/master/idp-service/
-  tags:
-    - nextjs
-    - react
-    - javascript
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}

@@ -32,9 +32,9 @@ spec:
       name: Creating your github repository
       action: trigger:harness-custom-pipeline
       input:
-        url: PIPELINE_URL
+        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/shibamD/projects/sd1/pipelines/sd/pipeline-studio/?storeType=INLINE
         inputset:
-          github_org: ${{ parameters.project_name }}
+          base64: ${{ parameters.uploaded_file }}
         apikey: ${{ parameters.token }}
   output:
     links:

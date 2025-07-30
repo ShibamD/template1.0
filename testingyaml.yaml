@@ -1,12 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: AtlasOne-adservice
+  name: Github-Actions
   namespace: default
   description: Ad Service for the AtlasOne online
   annotations:
-    jenkins.io/github-folder: danf-test/test
-    github.com/project-slug: https://github.com/wings-software/e2e-enterprise-demo
+    github.com/project-slug: jenil-jain/test
     backstage.io/kubernetes-id: adservice
     backstage.io/kubernetes-namespace: atlasone-prod
     backstage.io/source-location: url:https://harness-dev.ghe.com/jenil-jain/test/blob/main/test.yaml

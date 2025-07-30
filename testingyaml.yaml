@@ -1,34 +1,38 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  namespace: default
+  name: orderservice
   annotations:
-    backstage.io/managed-by-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
-    backstage.io/managed-by-origin-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
-    backstage.io/view-url: https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
-    backstage.io/edit-url: https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml?mode=edit&at=main
-    backstage.io/source-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src
-  name: stocopy2
+    backstage.io/techdocs-ref: dir:.
+    gitlab.com/project-id: '43877214'
+    jira/project-key: IDP
+    jenkins.io/github-folder: CDS-68313
+    firehydrant.com/service-name: python-pipeline-samples
+    backstage.io/kubernetes-label-selector: app=idp-ui
+    backstage.io/kubernetes-namespace: 63feee14cbf66e3c798c4bdc
+    github.com/project-slug: vigneswara-propelo/python-pipeline-samples
+    harness.io/pipelines: >
+      Build:
+      https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/a_org/projects/idptestproject/pipelines/ergrgrg/pipeline-studio?storeType=INLINE
+    pagerduty.com/service-id: PNISOWY
+    backstage.io/source-location: url:https://github.com/vikyathharekal/order-service/blob/main
   tags:
-    - auto-generated
+    - java
+    - food-ordering
+    - tag1
+    - tag2
+    - tag3
+    - tag4
+  links: []
   codeCoverageScore: 60
-  uid: 25618c11-242b-46aa-9345-594280ac6a62
-  etag: 09306e0ad04023c49530a2131fdb9eb9301c85ce
-relations:
-  - type: ownedBy
-    targetRef: group:default/harness_account_all_users
-    target:
-      kind: group
-      namespace: default
-      name: harness_account_all_users
-  - type: partOf
-    targetRef: system:default/hyperworkspace
-    target:
-      kind: system
-      namespace: default
-      name: hyperworkspace
+  harnessData:
+    name: Microservice.AppD
+  releaseVersion: abcd
+  customField: custom1
+relations: []
 spec:
+  owner: Harness_Account_All_Users
   type: service
   lifecycle: experimental
-  owner: Harness_Account_All_Users
-  system: hyperworkspace
+  providesApis:
+    - idp-Service-api

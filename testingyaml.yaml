@@ -1,32 +1,24 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: API
 metadata:
-  name: Github-Actions
+  name: petstore2
   namespace: default
-  description: Ad Service for the AtlasOne online
+  description: The petstore API Test
   annotations:
-    github.com/project-slug: jenil-jain/test
-    backstage.io/kubernetes-id: adservice
-    backstage.io/kubernetes-namespace: atlasone-prod
-    backstage.io/source-location: url:https://harness-dev.ghe.com/jenil-jain/test/blob/main/test.yaml
+    backstage.io/source-location: >-
+      url:https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/code/orgs/default/projects/debaidptest/repos/test-united/files/main/~/
   tags:
-    - spotify
-    - rest
     - store
+    - rest
   links:
-    - url: http://34.67.7.165/
-      title: Prod Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
-    - url: http://34.28.46.65
-      title: QA Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
-    - url: http://34.135.60.81/
-      title: Dev Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
+    - url: https://github.com/swagger-api/swagger-petstore
+      title: GitHub Repo
+      icon: github
+    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
+      title: API Spec
+      icon: code
 spec:
-  owner: test owner field
-  type: service
+  owner: team-c
+  type: openapi
   lifecycle: experimental
+  definition: random

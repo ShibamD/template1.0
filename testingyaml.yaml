@@ -1,24 +1,65 @@
-apiVersion: backstage.io/v1alpha1
-kind: API
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
 metadata:
-  name: petstore2
+  name: Check-branch-is-present
+  title: Check branch is present
+  description: A template to test GitSync variables
+  annotations: {}
+  tags: []
   namespace: default
-  description: The petstore API Test
-  annotations:
-    backstage.io/source-location: >-
-      url:https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/code/orgs/default/projects/debaidptest/repos/test-united/files/main/~/
-  tags:
-    - store
-    - rest
-  links:
-    - url: https://github.com/swagger-api/swagger-petstore
-      title: GitHub Repo
-      icon: github
-    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-      title: API Spec
-      icon: code
 spec:
-  owner: team-c
-  type: openapi
-  lifecycle: experimental
-  definition: random
+  owner: user:account/deepesh.kumar@harness.io
+  type: service
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+  parameters:
+    - title: Fill in some steps
+      properties:
+        username:
+          title: GitUserName
+          type: string
+          description: Unique name of the component
+          default: deepesh-ui
+        reponame:
+          title: Repo Name
+          type: string
+          description: Unique name of the component
+          default: idptemplates
+        branchname:
+          title: Branch Name
+          type: string
+          description: Unique name of the component
+          default: main
+        github_branches:
+          type: string
+          ui:field: ValidateAndFetch
+          ui:options:
+            placeholder: Select Git hub branch
+            path: proxy/github-api/repos/{{parameters.username}}/{{parameters.reponame}}/branches/{{parameters.branchname}}
+            setContextData:
+              checkbranch: name
+        branchispresent:
+          title: User Name
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {}
+          description: Branch is present
+          type: string
+  steps:
+    - id: trigger
+      name: Writing the GitSync Variable
+      action: trigger:harness-custom-pipeline
+      input:
+        url: >-
+          https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset:
+          username: ${{ parameters.username }}
+          name: ${{ parameters.name }}
+          pipeline.stages.GitsyncStageTemplate.variables.greetings: ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  ownedBy:
+    - user:account/deepesh.kumar@harness.io
+    - user:account/deepesh.kumar@harness.io

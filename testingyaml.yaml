@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Boutique Checkout
+  name: Boutique-Checkout
   namespace: default
   description: Test Description
   annotations:

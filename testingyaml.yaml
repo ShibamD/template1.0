@@ -1,37 +1,32 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: orderservice
+  name: 'AtlasOne-adservice '
   annotations:
-    backstage.io/techdocs-ref: dir:.
-    gitlab.com/project-id: '43877214'
-    jira/project-key: IDP
-    jenkins.io/github-folder: CDS-68313
-    firehydrant.com/service-name: python-pipeline-samples
-    backstage.io/kubernetes-label-selector: app=idp-ui
-    backstage.io/kubernetes-namespace: 63feee14cbf66e3c798c4bdc
-    github.com/project-slug: vigneswara-propelo/python-pipeline-samples
-    harness.io/pipelines: >
-      Build:
-      https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/a_org/projects/idptestproject/pipelines/ergrgrg/pipeline-studio?storeType=INLINE
-    pagerduty.com/service-id: PNISOWY
-    backstage.io/source-location: url:https://github.com/vikyathharekal/order-service/blob/main
+    jenkins.io/github-folder: danf-test/test
+    github.com/project-slug: https://github.com/wings-software/e2e-enterprise-demo
+    backstage.io/kubernetes-id: adservice
+    backstage.io/kubernetes-namespace: atlasone-prod
+    backstage.io/source-location: url:https://harness-dev.ghe.com/jenil-jain/test/blob/main/test.yaml
   tags:
-    - java
-    - food-orderin
-    - tag2
-    - tag3
-    - tag4
-  links: []
-  codeCoverageScore: 60
-  harnessData:
-    name: Microservice.AppD
-  releaseVersion: abcd
-  customField: custom1
+    - spotify
+    - rest
+    - store
+  links:
+    - url: http://34.67.7.165/
+      title: Prod Website
+      icon: dashboard
+      type: AtlasOne FrontEnd
+    - url: http://34.28.46.65
+      title: QA Website
+      icon: dashboard
+      type: AtlasOne FrontEnd
+    - url: http://34.135.60.81/
+      title: Dev Website
+      icon: dashboard
+      type: AtlasOne FrontEnd
 relations: []
 spec:
-  owner: Harness_Account_All_Users
+  owner: test owner field
   type: service
   lifecycle: experimental
-  providesApis:
-    - idp-Service-api

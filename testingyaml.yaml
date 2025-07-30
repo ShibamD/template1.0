@@ -1,17 +1,18 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: harness.io/v1
 kind: Component
+type: ''
+identifier: unknown
+name: unknown
+owner: ''
+spec:
+  lifecycle: experimental
 metadata:
-  name: 'AtlasOne-adservice '
   annotations:
     jenkins.io/github-folder: danf-test/test
     github.com/project-slug: https://github.com/wings-software/e2e-enterprise-demo
     backstage.io/kubernetes-id: adservice
     backstage.io/kubernetes-namespace: atlasone-prod
     backstage.io/source-location: url:https://harness-dev.ghe.com/jenil-jain/test/blob/main/test.yaml
-  tags:
-    - spotify
-    - rest
-    - store
   links:
     - url: http://34.67.7.165/
       title: Prod Website
@@ -25,8 +26,7 @@ metadata:
       title: Dev Website
       icon: dashboard
       type: AtlasOne FrontEnd
-relations: []
-spec:
-  owner: test owner field
-  type: service
-  lifecycle: experimental
+  tags:
+    - spotify
+    - rest
+    - store

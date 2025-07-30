@@ -1,33 +1,17 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: 'AtlasOne-adservice '
+  name: Boutique Checkout
   namespace: default
-  description: Ad Service for the AtlasOne online
+  description: Test Description
   annotations:
-    jenkins.io/github-folder: danf-test/test
-    github.com/project-slug: https://github.com/wings-software/e2e-enterprise-demo
-    backstage.io/kubernetes-id: adservice
-    backstage.io/kubernetes-namespace: atlasone-prod
-    backstage.io/source-location: url:https://harness-dev.ghe.com/jenil-jain/test/blob/main/test.yaml
-  tags:
-    - spotify
-    - rest
-    - store
-  links:
-    - url: http://34.67.7.165/
-      title: Prod Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
-    - url: http://34.28.46.65
-      title: QA Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
-    - url: http://34.135.60.81/
-      title: Dev Website
-      icon: dashboard
-      type: AtlasOne FrontEnd
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/source-location: url:https://gihub.com/harness/harness-core
+  majorVersion: 3
 spec:
-  owner: test owner field
+  owner: group:test_user
   type: service
-  lifecycle: experimental
+  lifecycle: Production
+  dependsOn:
+    - api:dasdsa
+    - api:test_project

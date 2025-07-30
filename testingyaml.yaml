@@ -3,56 +3,17 @@ kind: Component
 metadata:
   namespace: default
   annotations:
-    backstage.io/managed-by-location: url:https://github.com/vigneswara-propelo/python-pipeline-samples/tree/main/catalog-info.yaml
-    backstage.io/managed-by-origin-location: url:https://github.com/vigneswara-propelo/python-pipeline-samples/blob/main/catalog-info.yaml
-    backstage.io/view-url: https://github.com/vigneswara-propelo/python-pipeline-samples/tree/main/catalog-info.yaml
-    backstage.io/edit-url: https://github.com/vigneswara-propelo/python-pipeline-samples/edit/main/catalog-info.yaml
-    backstage.io/source-location: url:https://github.com/vigneswara-propelo/python-pipeline-samples/tree/main/
-    backstage.io/techdocs-ref: dir:.
-    jira/project-key: IDP
-    jenkins.io/github-folder: CDS-68313
-    firehydrant.com/service-name: python-pipeline-samples
-    backstage.io/kubernetes-label-selector: harness.io/name=kubernetes-delegate
-    github.com/project-slug: vigneswara-propelo/python-pipeline-samples
-    pagerduty.com/service-id: PT5ED69
-    harness.io/cd-serviceId: idpapp
-    harness.io/pipelines: >
-      Build:
-      https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/IDP_UI/pipelines/Build_IDP_UI_App/pipeline-studio/?storeType=INLINE
-
-      Lint:
-      https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/IDP_UI/pipelines/Lint/pipeline-studio
-
-      TypeCheck:
-      https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/IDP_UI/pipelines/Typecheck/pipeline-studio
-    grafana/dashboard-selector: (tags @> 'prometheus' || tags @> 'blackbox')
-    npm_token: npm_adfevegevef
-    opsgenie.com/team: test
-    opsgenie.com/component-selector: test
-  name: python-pipeline-samples
+    backstage.io/managed-by-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
+    backstage.io/managed-by-origin-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
+    backstage.io/view-url: https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml
+    backstage.io/edit-url: https://bitbucket.org/pipelinefeaturetest/idp/src/main/catalog-info.yaml?mode=edit&at=main
+    backstage.io/source-location: url:https://bitbucket.org/pipelinefeaturetest/idp/src
+  name: stocopy2
   tags:
-    - python-pipeline
-  branch: develop
-  customTags:
-    - tag1
-    - tag2
-    - tag3
-  version:
-    major: 11
-    minor: 11
-  harnessData:
-    qa_versions:
-      - idp-service_1.3
-      - idp-admin_1.3
-    qa_versions_jql: fixVersion ~ '*idp-service*1.3*' OR fixVersion ~ '*idp-admin*1.3*'
-  releaseVersion: 2.9
-  coverage: "89.00"
-  projectIdentifier: <+variable.account.projectIdentifier>
-  orgIdentifier: <+variable.account.orgIdentifier>
-  teamLead: John Doe
+    - auto-generated
   codeCoverageScore: 60
-  uid: 6087c0a3-df7d-4d90-a7ce-1efdbfcbaa13
-  etag: 95ea1d8978759f944a2ccd259ebb5b0c74a3189e
+  uid: 25618c11-242b-46aa-9345-594280ac6a62
+  etag: 09306e0ad04023c49530a2131fdb9eb9301c85ce
 relations:
   - type: ownedBy
     targetRef: group:default/harness_account_all_users
@@ -60,15 +21,14 @@ relations:
       kind: group
       namespace: default
       name: harness_account_all_users
-  - type: providesApi
-    targetRef: api:default/idp-service-api
+  - type: partOf
+    targetRef: system:default/hyperworkspace
     target:
-      kind: api
+      kind: system
       namespace: default
-      name: idp-service-api
+      name: hyperworkspace
 spec:
   type: service
   lifecycle: experimental
-  owner: harness_account_all_users
-  providesApis:
-    - idp-Service-api
+  owner: Harness_Account_All_Users
+  system: hyperworkspace
